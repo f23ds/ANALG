@@ -1,0 +1,2 @@
+./exercise5 -num_min 1000 -num_max 10000 -incr 1000 -numP 100 -outputFile 'ej5.txt'
+
