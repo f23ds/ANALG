@@ -1,0 +1,113 @@
+
+
+*******************************************************************************
+Fri Oct 28 18:34:33 2022
+
+
+FIT:    data read from 'ej5.txt' using 1:5
+        format = x:z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = a*f(x) + b
+	f(x) = x*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 2.5148133776e+10   0.00e+00  3.92e+04    1.000000e+00   1.000000e+00
+   3 1.5247385796e+08  -3.51e-01  3.92e+01    1.902285e+00   1.041636e+00
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.52474e+08
+rel. change during last iteration : -3.5118e-06
+
+degrees of freedom    (FIT_NDF)                        : 8
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 4365.69
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.90592e+07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.90228          +/- 0.05051      (2.655%)
+b               = 1.04164          +/- 2799         (2.687e+05%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.870  1.000 
+
+
+*******************************************************************************
+Fri Oct 28 18:35:03 2022
+
+
+FIT:    data read from 'ej5.txt' using 1:3
+        format = x:z
+        x range restricted to [2800.00 : 11800.0]
+        #datapoints = 8
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = a*f(x) + b
+	f(x) = x*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.5069133158e+09   0.00e+00  8.30e+04    1.902285e+00   1.041636e+00
+   3 1.8259861826e+06  -1.59e-01  8.30e+01    1.679865e+00   1.040797e+00
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.82599e+06
+rel. change during last iteration : -1.59069e-06
+
+degrees of freedom    (FIT_NDF)                        : 6
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 551.662
+variance of residuals (reduced chisquare) = WSSR/ndf   : 304331
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.67986          +/- 0.008738     (0.5202%)
+b               = 1.0408           +/- 538.9        (5.178e+04%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.932  1.000 
+
+
+*******************************************************************************
+Fri Oct 28 18:36:05 2022
+
+
+FIT:    data read from "ej5.txt" u 1:3
+        format = x:z
+        x range restricted to [2800.00 : 11800.0]
+        #datapoints = 8
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = a*f(x) + b
+	f(x) = 2*x*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 8.5856459226e+10   0.00e+00  1.47e+05    1.679865e+00   1.040797e+00
+   9 1.5619028362e+06  -8.86e-08  1.47e-04    8.437266e-01  -5.009495e+02
+
+After 9 iterations the fit converged.
+final sum of squares of residuals : 1.5619e+06
+rel. change during last iteration : -8.85915e-13
+
+degrees of freedom    (FIT_NDF)                        : 6
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 510.213
+variance of residuals (reduced chisquare) = WSSR/ndf   : 260317
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.843727         +/- 0.004041     (0.4789%)
+b               = -500.95          +/- 498.4        (99.49%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.932  1.000 

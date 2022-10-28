@@ -29,6 +29,11 @@ int SelectSortInv(int* array, int ip, int iu);
 int min(int* array, int ip, int iu, int *ob);
 int mergesort(int *tabla, int ip, int iu);
 int merge(int *tabla, int ip, int iu, int imedio);
+int quicksort(int *tabla, int ip, int iu);
+int partition(int *tabla, int ip, int iu, int *pos);
+int median(int *tabla, int ip, int iu, int *pos);
+int median_avg(int *tabla, int ip, int iu, int *pos);
+int median_stats(int *tabla, int ip, int iu, int *pos);
 
 
 #endif

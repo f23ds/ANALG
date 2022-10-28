@@ -62,7 +62,7 @@ exercise3_test:
 
 exercise4_test:
 	@echo Running exercise4
-	@./exercise4 -size 100 > datos.txt
+	@./exercise4 -size 20 > datos.txt
 
 exercise5_test:
 	@echo Running exercise5

@@ -143,8 +143,6 @@ int mergesort(int *tabla, int ip, int iu)
 
   /* Hacemos merge */
   ob += merge(tabla, ip, iu, imedio);
-  if (ob == ERR)
-    return ERR;
 
   return ob;
 }
@@ -183,9 +181,8 @@ int merge(int *tabla, int ip, int iu, int imedio)
   /* Copiamos resto de la tabla derecha */
   if (i > imedio)
   {
-    while (j <= iu)
+    while (++ob && j <= iu)
     {
-      ob++;
       aux[k] = tabla[j];
       j++;
       k++;
@@ -193,16 +190,15 @@ int merge(int *tabla, int ip, int iu, int imedio)
   } /* Copiamos el resto de la tabla izquierda */
   else if (j > iu)
   {
-    while (i <= imedio)
+    while (++ob && i <= imedio)
     {
-      ob++;
       aux[k] = tabla[i];
       i++;
       k++;
     }
   }
 
-  /* Copiamos la tabla auxiliar entre los índices ip e iu */
+  /* TODO: Copiamos la tabla auxiliar entre los índices ip e iu */
   for (k = 0; k < size; k++)
   {
     swap(&aux[k], &tabla[ip + k]);
@@ -211,4 +207,127 @@ int merge(int *tabla, int ip, int iu, int imedio)
   free(aux);
 
   return ob;
+}
+
+/* TODO: CABECERA */
+int quicksort(int *tabla, int ip, int iu)
+{
+  int st = ERR, pos, ob = 0;
+
+  /* Control de errores */
+  assert(tabla != NULL);
+  assert(ip >= 0);
+  assert(iu >= ip);
+
+  /* CASO BASE */
+  if (iu == ip)
+    return OK;
+
+  pos = ip;
+
+  st = median(tabla, ip, iu, &pos);
+  if (st == ERR)
+    return ERR;
+
+  st = partition(tabla, ip, iu, &pos);
+  if (st == ERR)
+    return ERR;
+
+  ob += st;
+
+  if (ip < pos - 1)
+    ob += quicksort(tabla, ip, pos - 1);
+
+  if (pos + 1 < iu)
+    ob += quicksort(tabla, pos + 1, iu);
+
+  return ob;
+}
+
+int partition(int *tabla, int ip, int iu, int *pos)
+{
+  int ele, i, ob = 0;
+  /* CONTROL DE ERRORES */
+  assert(tabla != NULL);
+  assert(ip >= 0);
+  assert(iu >= ip);
+  assert(pos != NULL);
+
+  ele = tabla[*pos];
+  /* Realizamos un primer swap */
+  swap(&tabla[ip], &ele);
+
+  *pos = ip;
+
+  for (i = ip + 1; i <= iu; i++)
+  {
+    /* Comparación de claves */
+    if (++ob && tabla[i] < ele)
+    {
+      (*pos)++;
+      swap(&tabla[i], &tabla[*pos]);
+    }
+  }
+
+  swap(&tabla[ip], &tabla[*pos]);
+
+  return ob;
+}
+
+int median(int *tabla, int ip, int iu, int *pos)
+{
+  /* CONTROL DE ERRORES */
+  assert(tabla != NULL);
+  assert(ip >= 0);
+  assert(iu >= ip);
+  assert(pos != NULL);
+
+  *pos = ip;
+
+  return OK;
+}
+
+int median_avg(int *tabla, int ip, int iu, int *pos)
+{
+  /* CONTROL DE ERRORES */
+  assert(tabla != NULL);
+  assert(ip >= 0);
+  assert(iu >= ip);
+  assert(pos != NULL);
+
+  *pos = (ip + iu) / 2;
+
+  return OK;
+}
+
+int median_stat(int *tabla, int ip, int iu, int *pos)
+{
+  int e1, int e2, int e3;
+  /* CONTROL DE ERRORES */
+  assert(tabla != NULL);
+  assert(ip >= 0);
+  assert(iu >= ip);
+  assert(pos != NULL);
+
+  e1 = talba[ip];
+  e2 = tabla[iu];
+  e3 = tabla[(ip + iu) / 2];
+
+  if (e1 < e2)
+  {
+    if (e2 < e3)
+    {
+      *pos = iu;
+    }
+    else
+    {
+      *pos = (ip + iu) / 2;
+    }
+  }
+  else
+  {
+    *pos = ip;
+  }
+
+  return OK;
 }
