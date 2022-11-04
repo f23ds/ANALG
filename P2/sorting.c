@@ -225,14 +225,12 @@ int quicksort(int *tabla, int ip, int iu)
 
   pos = ip;
 
-  st = median(tabla, ip, iu, &pos);
-  if (st == ERR)
-    return ERR;
-
+  /* Realizamos la partición */
   st = partition(tabla, ip, iu, &pos);
   if (st == ERR)
     return ERR;
 
+  /* Añadimos la ob */
   ob += st;
 
   if (ip < pos - 1)
@@ -252,6 +250,8 @@ int partition(int *tabla, int ip, int iu, int *pos)
   assert(ip >= 0);
   assert(iu >= ip);
   assert(pos != NULL);
+
+  ob += median(tabla, ip, iu, pos);
 
   ele = tabla[*pos];
   /* Realizamos un primer swap */
@@ -302,32 +302,49 @@ int median_avg(int *tabla, int ip, int iu, int *pos)
 
 int median_stat(int *tabla, int ip, int iu, int *pos)
 {
-  int e1, int e2, int e3;
+  int e1, e2, e3, im, ob = 0;
   /* CONTROL DE ERRORES */
   assert(tabla != NULL);
   assert(ip >= 0);
   assert(iu >= ip);
   assert(pos != NULL);
 
-  e1 = talba[ip];
+  im = (ip + iu) / 2;
+  e1 = tabla[ip];
   e2 = tabla[iu];
-  e3 = tabla[(ip + iu) / 2];
+  e3 = tabla[im];
 
-  if (e1 < e2)
+  /* Algoritmo de comparación de tres elementos */
+  if (++ob && e1 < e2)
   {
-    if (e2 < e3)
+    if (++ob && e2 <= e3)
     {
       *pos = iu;
     }
+    else if (++ob && e1 < e3)
+    {
+      *pos = im;
+    }
     else
     {
-      *pos = (ip + iu) / 2;
+      *pos = ip;
     }
   }
   else
   {
-    *pos = ip;
+    if (++ob && e2 >= e3)
+    {
+      *pos = iu;
+    }
+    else if (++ob && e1 > e3)
+    {
+      *pos = im;
+    }
+    else
+    {
+      *pos = ip;
+    }
   }
 
-  return OK;
+  return ob;
 }
